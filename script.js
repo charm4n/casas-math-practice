@@ -203,6 +203,47 @@ function showResults() {
     } else {
       improvements.push(`${q.topic}: Needs review. (${q.explanation})`);
     }
+
+    // Adaptive Free Resource Pool Logic (Including YouTube Study Guide Walkthrough)
+  const resourceContainer = document.getElementById('resourceTilesContainer');
+  let recommendedResources = [];
+
+  if (percentage < 70) {
+    recommendedResources = [
+      { 
+        title: "CASAS Study Guide Walkthrough", 
+        url: "https://www.youtube.com/watch?v=xWpsBajWCmQ", 
+        desc: "A video overview with strategic study plans and test pacing tips." 
+      },
+      { 
+        title: "Effortless Math Flashcards", 
+        url: "https://www.effortlessmath.com/math-flashcards/", 
+        desc: "Free interactive decks covering algebra rules, fractions, and formulas." 
+      }
+    ];
+  } else {
+    recommendedResources = [
+      { 
+        title: "CASAS Study Guide Walkthrough", 
+        url: "https://www.youtube.com/watch?v=xWpsBajWCmQ", 
+        desc: "A video overview with strategic study plans and test pacing tips." 
+      },
+      { 
+        title: "MathHelp Study Guide", 
+        url: "https://www.mathhelp.com/casa-math-study-guide/", 
+        desc: "Targeted skill-building lessons and diagnostics for advanced test prep." 
+      }
+    ];
+  }
+
+  resourceContainer.innerHTML = recommendedResources.map(res => `
+    <a href="${res.url}" target="_blank" rel="noopener noreferrer" class="resource-tile">
+      <div>
+        <h4>${res.title} &rarr;</h4>
+        <p>${res.desc}</p>
+      </div>
+    </a>
+  `).join('');
   });
 
   const percentage = Math.round((score / questions.length) * 100);
