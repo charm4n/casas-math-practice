@@ -208,6 +208,11 @@ function showResults() {
   const percentage = Math.round((score / questions.length) * 100);
   document.getElementById('scoreDisplay').textContent = `${percentage}%`;
 
+  // Animate the textured score bar
+  setTimeout(() => {
+    document.getElementById('scoreFillBar').style.width = `${percentage}%`;
+  }, 100);
+
   const pastScoresList = document.getElementById('pastScoresList');
   const allScores = saveScore(percentage);
   
@@ -234,7 +239,9 @@ document.getElementById('retryBtn').onclick = () => {
   userAnswers = [];
   document.getElementById('resultsPanel').classList.add('hidden');
   document.getElementById('quizCard').classList.remove('hidden');
+  document.getElementById('scoreFillBar').style.width = '0%'; // Reset animated bar
   loadQuestion();
 };
 
-loadQuestion();
+loadQuestion(); 
+/* END OF SCRIPT.JS */

@@ -63,7 +63,14 @@
     <!-- Results Panel -->
     <section id="resultsPanel" class="card hidden" aria-live="polite">
       <h2>Assessment Complete!</h2>
-      <div class="score-badge" id="scoreDisplay">0%</div>
+      
+      <!-- High Contrast Score Visual -->
+      <div class="score-visual-wrapper" aria-hidden="true">
+        <div class="score-track">
+          <div class="score-fill" id="scoreFillBar"></div>
+        </div>
+        <div class="score-badge" id="scoreDisplay">0%</div>
+      </div>
 
       <!-- Past Scores Tracking -->
       <div class="past-scores">
