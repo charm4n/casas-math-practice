@@ -10,8 +10,6 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
 
-  <!-- HUMAN ASSISTANCE REQUIRED: Paste your Google Analytics or Plausible <script> tag here -->
-  
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -52,7 +50,7 @@
         <!-- Options injected dynamically -->
       </div>
 
-      <!-- Instant Feedback Box (Hidden by default) -->
+      <!-- Instant Feedback Box -->
       <div id="instantFeedback" class="feedback-box hidden" aria-live="assertive"></div>
 
       <div class="card-footer">
@@ -92,12 +90,10 @@
       <!-- Adaptive Resource Section -->
       <div class="resources-section">
         <h3>Recommended Free Study Resources</h3>
-        <div id="resourceTilesContainer" class="resource-grid">
-          <!-- Resource tiles injected dynamically -->
-        </div>
+        <div id="resourceTilesContainer" class="resource-grid"></div>
       </div>
 
-      <div class="action-buttons">
+      <div class="action-buttons" style="margin-top: 1.5rem;">
         <button id="retryBtn" class="btn secondary">Retake Assessment</button>
       </div>
     </section>

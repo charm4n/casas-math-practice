@@ -203,56 +203,18 @@ function showResults() {
     } else {
       improvements.push(`${q.topic}: Needs review. (${q.explanation})`);
     }
-
-    // Adaptive Free Resource Pool Logic (Including YouTube Study Guide Walkthrough)
-  const resourceContainer = document.getElementById('resourceTilesContainer');
-  let recommendedResources = [];
-
-  if (percentage < 70) {
-    recommendedResources = [
-      { 
-        title: "CASAS Study Guide Walkthrough", 
-        url: "https://www.youtube.com/watch?v=xWpsBajWCmQ", 
-        desc: "A video overview with strategic study plans and test pacing tips." 
-      },
-      { 
-        title: "Effortless Math Flashcards", 
-        url: "https://www.effortlessmath.com/math-flashcards/", 
-        desc: "Free interactive decks covering algebra rules, fractions, and formulas." 
-      }
-    ];
-  } else {
-    recommendedResources = [
-      { 
-        title: "CASAS Study Guide Walkthrough", 
-        url: "https://www.youtube.com/watch?v=xWpsBajWCmQ", 
-        desc: "A video overview with strategic study plans and test pacing tips." 
-      },
-      { 
-        title: "MathHelp Study Guide", 
-        url: "https://www.mathhelp.com/casa-math-study-guide/", 
-        desc: "Targeted skill-building lessons and diagnostics for advanced test prep." 
-      }
-    ];
-  }
-
-  resourceContainer.innerHTML = recommendedResources.map(res => `
-    <a href="${res.url}" target="_blank" rel="noopener noreferrer" class="resource-tile">
-      <div>
-        <h4>${res.title} &rarr;</h4>
-        <p>${res.desc}</p>
-      </div>
-    </a>
-  `).join('');
   });
 
   const percentage = Math.round((score / questions.length) * 100);
   document.getElementById('scoreDisplay').textContent = `${percentage}%`;
 
-  // Animate the textured score bar
-  setTimeout(() => {
-    document.getElementById('scoreFillBar').style.width = `${percentage}%`;
-  }, 100);
+  // Animate the textured score bar safely
+  const scoreFillBar = document.getElementById('scoreFillBar');
+  if (scoreFillBar) {
+    setTimeout(() => {
+      scoreFillBar.style.width = `${percentage}%`;
+    }, 100);
+  }
 
   const pastScoresList = document.getElementById('pastScoresList');
   const allScores = saveScore(percentage);
@@ -272,6 +234,49 @@ function showResults() {
     ? improvements.map(i => `<li>${i}</li>`).join('') 
     : '<li>Excellent work! You demonstrated mastery in all evaluated topics.</li>';
 
+  // Adaptive Free Resource Pool Logic
+  const resourceContainer = document.getElementById('resourceTilesContainer');
+  if (resourceContainer) {
+    let recommendedResources = [];
+
+    if (percentage < 70) {
+      recommendedResources = [
+        { 
+          title: "CASAS Study Guide Walkthrough", 
+          url: "https://www.youtube.com/watch?v=xWpsBajWCmQ", 
+          desc: "A video overview with strategic study plans and test pacing tips." 
+        },
+        { 
+          title: "Effortless Math Flashcards", 
+          url: "https://www.effortlessmath.com/math-flashcards/", 
+          desc: "Free interactive decks covering algebra rules, fractions, and formulas." 
+        }
+      ];
+    } else {
+      recommendedResources = [
+        { 
+          title: "CASAS Study Guide Walkthrough", 
+          url: "https://www.youtube.com/watch?v=xWpsBajWCmQ", 
+          desc: "A video overview with strategic study plans and test pacing tips." 
+        },
+        { 
+          title: "MathHelp Study Guide", 
+          url: "https://www.mathhelp.com/casa-math-study-guide/", 
+          desc: "Targeted skill-building lessons and diagnostics for advanced test prep." 
+        }
+      ];
+    }
+
+    resourceContainer.innerHTML = recommendedResources.map(res => `
+      <a href="${res.url}" target="_blank" rel="noopener noreferrer" class="resource-tile">
+        <div>
+          <h4>${res.title} &rarr;</h4>
+          <p>${res.desc}</p>
+        </div>
+      </a>
+    `).join('');
+  }
+
   renderMath();
 }
 
@@ -280,9 +285,14 @@ document.getElementById('retryBtn').onclick = () => {
   userAnswers = [];
   document.getElementById('resultsPanel').classList.add('hidden');
   document.getElementById('quizCard').classList.remove('hidden');
-  document.getElementById('scoreFillBar').style.width = '0%'; // Reset animated bar
+  
+  const scoreFillBar = document.getElementById('scoreFillBar');
+  if (scoreFillBar) {
+    scoreFillBar.style.width = '0%';
+  }
+  
   loadQuestion();
 };
 
-loadQuestion(); 
+loadQuestion();
 /* END OF SCRIPT.JS */
