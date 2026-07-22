@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CASAS Math Practice & Self-Assessment</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-container">
+    <header class="quiz-header">
+      <h1>CASAS Math Skill Assessment</h1>
+      <p>Test your ready-for-work math competency</p>
+    </header>
+
+    <!-- Progress Bar -->
+    <div class="progress-container" aria-label="Progress">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <!-- Quiz Card Container -->
+    <main id="quizCard" class="card">
+      <div class="question-header">
+        <span id="questionCategory" class="badge">Category</span>
+        <span id="questionCounter">Question 1 of 10</span>
+      </div>
+
+      <h2 id="questionText">Loading question...</h2>
+
+      <div id="optionsContainer" class="options-grid">
+        <!-- Options injected dynamically -->
+      </div>
+
+      <div class="card-footer">
+        <button id="nextBtn" class="btn primary" disabled>Next Question</button>
+      </div>
+    </main>
+
+    <!-- Results Panel (Hidden by default) -->
+    <section id="resultsPanel" class="card hidden" aria-live="polite">
+      <h2>Assessment Complete!</h2>
+      <div class="score-badge" id="scoreDisplay">0%</div>
+
+      <div class="feedback-grid">
+        <div class="feedback-block strengths">
+          <h3>Strengths Demonstrated</h3>
+          <ul id="strengthsList"></ul>
+        </div>
+        <div class="feedback-block improvements">
+          <h3>Topics for Review</h3>
+          <ul id="improvementsList"></ul>
+        </div>
+      </div>
+
+      <div class="action-buttons">
+        <button id="retryBtn" class="btn secondary">Retake Assessment</button>
+      </div>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
