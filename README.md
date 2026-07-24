@@ -64,7 +64,10 @@ casas-math-test/
 ├── style.css         # Custom responsive styling, theme variables, and mobile breakpoints
 ├── script.js         # Question database, Fisher-Yates shuffle, state management, and scoring
 ├── manifest.json     # Web App Manifest for PWA installability
-└── README.md         # Documentation
+├── sitemap.xml       # Search engine sitemap for Google Search Console indexing
+├── robots.txt        # Web crawler directives and sitemap location
+├── LICENSE           # Open-source MIT License terms
+└── README.md         # Project documentation and setup guide
 ```
 
 ---
