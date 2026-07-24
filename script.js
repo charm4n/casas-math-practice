@@ -216,12 +216,21 @@ function showResults() {
         }, 100);
     }
 
+    // Color-Coded Score History Logic
     const pastScoresList = document.getElementById('pastScoresList');
     const allScores = saveScore(percentage);
 
-    pastScoresList.innerHTML = allScores.map(s =>
-        `<li>${s.score}% (${s.date})</li>`
-    ).join('');
+    pastScoresList.innerHTML = allScores.map(s => {
+        let scoreClass = '';
+        if (s.score >= 90) {
+            scoreClass = 'score-pass-high'; // Green
+        } else if (s.score >= 70) {
+            scoreClass = 'score-pass-low'; // Yellow
+        } else {
+            scoreClass = 'score-fail'; // Red
+        }
+        return `<li class="${scoreClass}">${s.score}% (${s.date})</li>`;
+    }).join('');
 
     const strengthsList = document.getElementById('strengthsList');
     const improvementsList = document.getElementById('improvementsList');

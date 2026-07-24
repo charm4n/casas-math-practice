@@ -157,7 +157,30 @@ body {
 .past-scores { background: rgba(37, 99, 235, 0.05); padding: 1rem; border-radius: var(--radius-md); margin-bottom: 1.5rem; }
 .past-scores h3 { font-size: 1rem; margin-bottom: 0.5rem; }
 .past-scores ul { list-style: none; display: flex; gap: 0.5rem; flex-wrap: wrap; }
-.past-scores li { background: var(--surface-color); border: 1px solid var(--border-color); padding: 0.25rem 0.75rem; border-radius: 999px; font-size: 0.85rem; font-weight: 600; }
+
+/* Color-Coded Score Pills */
+.past-scores li {
+  padding: 0.25rem 0.75rem; 
+  border-radius: 999px; 
+  font-size: 0.85rem; 
+  font-weight: 600;
+  border: 1px solid;
+}
+.past-scores li.score-fail { 
+  background: rgba(220, 38, 38, 0.1); 
+  border-color: var(--error-color); 
+  color: var(--error-color); 
+}
+.past-scores li.score-pass-low { 
+  background: rgba(217, 119, 6, 0.1); 
+  border-color: var(--warning-color); 
+  color: var(--warning-color); 
+}
+.past-scores li.score-pass-high { 
+  background: rgba(5, 150, 105, 0.1); 
+  border-color: var(--success-color); 
+  color: var(--success-color); 
+}
 
 /* Responsive Resource Grid & Tiles */
 .resources-section {
