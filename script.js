@@ -257,7 +257,7 @@ function shuffle(array) {
 function generateQuiz() {
     currentQuiz = [];
     const topics = [...new Set(allQuestions.map(q => q.topic))];
-    
+
     topics.forEach(topic => {
         const topicQuestions = allQuestions.filter(q => q.topic === topic);
         shuffle(topicQuestions);
@@ -419,11 +419,11 @@ function showResults() {
     pastScoresList.innerHTML = allScores.map(s => {
         let scoreClass = '';
         if (s.score >= 90) {
-            scoreClass = 'score-pass-high'; 
+            scoreClass = 'score-pass-high';
         } else if (s.score >= 70) {
-            scoreClass = 'score-pass-low'; 
+            scoreClass = 'score-pass-low';
         } else {
-            scoreClass = 'score-fail'; 
+            scoreClass = 'score-fail';
         }
         return `<li class="${scoreClass}">${s.score}% (${s.date})</li>`;
     }).join('');
